@@ -1,0 +1,183 @@
+<modification>
+<id><![CDATA[Make the Product buttons different colors]]></id>
+<version><![CDATA[1.0]]></version>
+<vqmver><![CDATA[2.3.2]]></vqmver>
+<author><![CDATA[computerbar]]></author>
+<file path="catalog/view/theme/*/template/common/" name="header.tpl">
+<operation info="Step One: ADD CSS">
+<search position="before" regex="true"><![CDATA[</head>]]></search>
+<add><![CDATA[<style type="text/css" > .button-1 {
+background: none repeat scroll 0 0 #38761D !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-2 {
+background: none repeat scroll 0 0 #3D85C6 !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-3 {
+background: none repeat scroll 0 0 #6FA8DC !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-4 {
+background: none repeat scroll 0 0 #990000 !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-5 {
+background: none repeat scroll 0 0 #D6253A !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-6 {
+background: none repeat scroll 0 0 #E06666 !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-7 {
+background: none repeat scroll 0 0 #274E13 !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+}
+.button-8 {
+background: none repeat scroll 0 0 #38761D !important;
+border-radius: 7px 7px 7px 7px;
+box-shadow: 0 2px 2px #DDDDDD;
+color: #FFFFFF;
+cursor: pointer;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 12px;
+border: 0 none;
+height: 24px;
+margin: 0;
+padding: 0 12px;
+} 
+.button-1:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-2:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-3:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-4:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-5:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-6:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-7:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+.button-8:hover { background: none repeat scroll 0 0 yellow !important; color:red;}
+</style>]]></add>
+</operation>
+</file>
+
+<!-- FILE 1: PRODUCT/CATEGORY.TPL -->
+<file path="catalog/view/theme/*/template/product/" name="category.tpl">
+<operation info="Step Two: ADD Veriables">
+<search position="after"><![CDATA[<div class="product-list">]]></search>
+<add><![CDATA[<?php $button_classes = array('button-1','button-2','button-3','button-4','button-5','button-6','button-7','button-8');
+$button_count = count($button_classes);
+$button_index = 0; ?>]]></add>
+</operation>
+<operation info="Step 3: Assign CSS Class">
+<search position="replace"><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />]]></search>
+<add><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="<?php echo $button_classes[$button_index++ % $button_count]; ?>" />]]></add>
+</operation>
+</file>
+
+<!-- FILE 2: MODULE/FEATURED.TPL -->
+<file path="catalog/view/theme/*/template/module/" name="featured.tpl">
+<operation info="Step Two: ADD Veriables">
+<search position="after"><![CDATA[<div class="box-product">]]></search>
+<add><![CDATA[<?php $button_classes = array('button-1','button-2','button-3','button-4','button-5','button-6','button-7','button-8');
+$button_count = count($button_classes);
+$button_index = 0; ?>]]></add>
+</operation>
+<operation info="Step 3: Assign CSS Class">
+<search position="replace"><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />]]></search>
+<add><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="<?php echo $button_classes[$button_index++ % $button_count]; ?>" />]]></add>
+</operation>
+</file>
+
+<!-- FILE 3: MODULE/LATEST.TPL -->
+<file path="catalog/view/theme/*/template/module/" name="latest.tpl">
+<operation info="Step Two: ADD Veriables">
+<search position="after"><![CDATA[<div class="box-product">]]></search>
+<add><![CDATA[<?php $button_classes = array('button-1','button-2','button-3','button-4','button-5','button-6','button-7','button-8');
+$button_count = count($button_classes);
+$button_index = 0; ?>]]></add>
+</operation>
+<operation info="Step 3: Assign CSS Class">
+<search position="replace"><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />]]></search>
+<add><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="<?php echo $button_classes[$button_index++ % $button_count]; ?>" />]]></add>
+</operation>
+</file>
+
+</modification>

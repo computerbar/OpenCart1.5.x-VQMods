@@ -1,0 +1,23 @@
+<modification>
+
+         <name>Default GridView</name>
+
+	<version>1</version>
+	<author>Ray|Computerbar@gmail.com</author>
+
+	<file name="catalog/view/theme/default/template/product/category.tpl">
+        <operation>
+            <search position="replace">
+            	<![CDATA[<?php echo $footer; ?>]]>
+            </search>
+            <add>
+            	<![CDATA[<script type="text/javascript">$(document).ready(function() { if(typeof display == 'function') { display('grid'); } });</script><?php echo $footer; ?>]]>
+            </add>
+        </operation>       
+	</file>
+	
+
+</modification>
+
+
+

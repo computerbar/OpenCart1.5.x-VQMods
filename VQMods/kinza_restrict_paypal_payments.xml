@@ -1,0 +1,19 @@
+<!-- Created using vQmod XML Generator by UKSB - http://uksb.github.com/vqgen/ //-->
+<modification>
+	<id><![CDATA[This mod Restricts and set maximum total for Paypal Pro Iframe Payment Method to be avaible to buyer.]]></id>
+	<version><![CDATA[1]]></version>
+	<vqmver><![CDATA[2.3.2]]></vqmver>
+	<author><![CDATA[Ray|ComputerBar@gmail.com]]></author>
+	<file path="catalog/model/payment/" name="pp_pro_iframe.php">
+		<operation info="Change the Filed from Miinimum to Maximum">
+			<search position="replace"><![CDATA[if ($this->config->get('pp_pro_iframe_total') > $total) {]]></search>
+			<add><![CDATA[if ($this->config->get('pp_pro_iframe_total') < $total) {]]></add>
+		</operation>
+	</file>
+	<file path="rashid/language/english/payment/" name="pp_pro_iframe.php">
+		<operation info="Replace the Minimun Total to Maximum Total">
+			<search position="replace"><![CDATA[$_['entry_total']        = 'Total:<br /><span class="help">The checkout total the order must reach before this payment method becomes active.</span>';]]></search>
+			<add><![CDATA[$_['entry_total']        = 'Maximum Total:<br /><span class="help">The Maximum total when this payment option will be disabled</span>';]]></add>
+		</operation>
+	</file>
+</modification>

@@ -1,0 +1,24 @@
+<modification>
+	<id><![CDATA[Kinza_VAT_no]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.3.1]]></vqmver>
+	<author><![CDATA[Ray | computerbar@gmail.com]]></author>
+	<file name="catalog/view/theme/*/template/common/register.tpl">
+			<operation error="log" info="Company Name">
+			<search position="replace"><![CDATA[<td><?php echo $entry_company; ?></td>]]></search>
+			<add><![CDATA[<td>Business/Company Name:</td>]]></add>
+		</operation>
+			<operation error="log" info="Company NO">
+			<search position="replace"><![CDATA[<td><span id="company-id-required" class="required">*</span> <?php echo $entry_company_id; ?></td>]]></search>
+			<add><![CDATA[<td><span id="company-id-required" class="required">*</span> Company Registration No:</td>]]></add>
+		</operation>
+		
+	
+			<operation error="log" info="VAT No">
+			<search position="replace"><![CDATA[<td><span id="tax-id-required" class="required">*</span> <?php echo $entry_tax_id; ?></td>]]></search>
+			<add><![CDATA[<td><span id="tax-id-required" class="required">*</span> VAT NO:</td>]]></add>
+		</operation>
+						
+		
+	</file>
+</modification>

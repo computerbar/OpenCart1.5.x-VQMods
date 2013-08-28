@@ -1,0 +1,63 @@
+<!-- Created using vQmod XML Generator by UKSB - http://uksb.github.com/vqgen/ //-->
+<modification>
+	<id><![CDATA[Kinza_Google_Microdata_Markup]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.3.1]]></vqmver>
+	<author><![CDATA[Ray | computerbar@gmail.com]]></author>
+	<file path="catalog/view/theme/*/template/product/" name="product.tpl">
+		<operation info="Add microdata to product">
+			<search position="replace"><![CDATA[<div id="content"><?php echo $content_top; ?>]]></search>
+			<add><![CDATA[<div itemscope itemtype="http://schema.org/Product" id="content"><?php echo $content_top; ?>]]></add>
+		</operation>
+		<operation info="Add Name of the Product and URL">
+			<search position="after"><![CDATA[<h1><?php echo $heading_title; ?></h1>]]></search>
+			<add><![CDATA[<meta itemprop="name" content="[<?php echo $heading_title; ?>]"><a style="display:none;" itemprop="url" href="<?php echo $this->url->link('product/product', 'product_id=' . $product_id); ?>"><?php echo $this->url->link('product/product', 'product_id=' . $product_id); ?></a>]]></add>
+		</operation>
+		<operation info="Add tag to Product Image">
+			<search position="replace"><![CDATA[<div class="image"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a></div>]]></search>
+			<add><![CDATA[<div class="image"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img itemprop="image" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image"  /></a></div>]]></add>
+		</operation>
+		<operation info="Add manufacturer or brand">
+			<search position="replace"><![CDATA[<span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />]]></search>
+			<add><![CDATA[<span><?php echo $text_manufacturer; ?></span> <a itemprop="brand" href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />]]></add>
+		</operation>
+		<operation info="Add OFFER ITEMSCOPE tag to Product Price DIV CLASS">
+			<search position="replace"><![CDATA[<div class="price"><?php echo $text_price; ?>]]></search>
+			<add><![CDATA[<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="price"><?php echo $text_price; ?>]]></add>
+		</operation>
+		<operation info="Add Actual Price Tag">
+			<search position="replace"><![CDATA[<?php echo $price; ?>]]></search>
+			<add><![CDATA[<span itemprop="price"><?php echo $price; ?></span>]]></add>
+		</operation>
+		<operation info="Add Tag to Product Description">
+			<search position="replace"><![CDATA[<div id="tab-description" class="tab-content"><?php echo $description; ?></div>]]></search>
+			<add><![CDATA[<div itemprop="description" id="tab-description" class="tab-content"><?php echo $description; ?></div>]]></add>
+		</operation>
+	</file>
+	<file path="catalog/view/theme/*/template/product/" name="category.tpl">
+		<operation info="Adding itemscope as PRODUCT to category class">
+			<search position="replace"><![CDATA[<div class="product-list">]]></search>
+			<add><![CDATA[  <div itemscope itemtype="http://schema.org/Product" class="product-list">]]></add>
+		</operation>
+		<operation info="Add name tag to product images">
+			<search position="replace"><![CDATA[<div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>]]></search>
+			<add><![CDATA[<div class="image"><a href="<?php echo $product['href']; ?>"><img itemprop="image" src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>]]></add>
+		</operation>
+		<operation info="Add name and URL tag to item titles">
+			<search position="replace"><![CDATA[<div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>]]></search>
+			<add><![CDATA[<div class="name" itemprop="name"><a itemprop="url" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>]]></add>
+		</operation>
+		<operation info="Add description tag">
+			<search position="replace"><![CDATA[<div class="description"><?php echo $product['description']; ?></div>]]></search>
+			<add><![CDATA[<div itemprop="description" class="description"><?php echo $product['description']; ?></div>]]></add>
+		</operation>
+		<operation info="Add OFFER ITEMSCOPE to price class">
+			<search position="replace"><![CDATA[<div class="price">]]></search>
+			<add><![CDATA[<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="price">]]></add>
+		</operation>
+		<operation info="Add price tag">
+			<search position="replace"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<span itemprop="price"><?php echo $product['price']; ?></span>]]></add>
+		</operation>
+	</file>
+</modification>

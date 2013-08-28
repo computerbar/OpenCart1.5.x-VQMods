@@ -1,0 +1,15 @@
+<modification>
+	<id>Buy Now Buttons</id>
+	<version>1</version>
+	<vqmver>2.3.</vqmver> 
+	<author>Ray|Computerbar@gmail.com</author>
+	
+	<file name="catalog/language/english/english.php">
+		<operation error="log">
+			<search position="replace" >
+			<![CDATA[$_['button_cart']           = 'Add to Cart';]]></search> 
+			<add><![CDATA[$_['button_cart']           = 'Buy Now';]]></add>
+		</operation>
+				
+	</file>
+	</modification>
