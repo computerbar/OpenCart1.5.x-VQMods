@@ -10,7 +10,7 @@
 			<add><![CDATA[if ($this->config->get('pp_pro_iframe_total') < $total) {]]></add>
 		</operation>
 	</file>
-	<file path="rashid/language/english/payment/" name="pp_pro_iframe.php">
+	<file path="admin/language/english/payment/" name="pp_pro_iframe.php">
 		<operation info="Replace the Minimun Total to Maximum Total">
 			<search position="replace"><![CDATA[$_['entry_total']        = 'Total:<br /><span class="help">The checkout total the order must reach before this payment method becomes active.</span>';]]></search>
 			<add><![CDATA[$_['entry_total']        = 'Maximum Total:<br /><span class="help">The Maximum total when this payment option will be disabled</span>';]]></add>
